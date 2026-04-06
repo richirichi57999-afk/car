@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bad Bunny - Página Interactiva</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #edf2ff;
+            background: radial-gradient(circle at top, #07111f 0%, #050713 48%, #081523 100%);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: "🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 220%;
+            height: 100%;
+            background-image: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.05) 16%, transparent 28%, rgba(255,255,255,0.07) 42%, transparent 58%, rgba(255,255,255,0.05) 72%, transparent 88%, rgba(255,255,255,0.05) 100%);
+            background-size: 100% 60px;
+            pointer-events: none;
+            animation: moveBinary 14s linear infinite;
+            opacity: 0.18;
+            z-index: 0;
+        }
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px), radial-gradient(circle, rgba(84,242,255,0.08) 1px, transparent 1px);
+            background-size: 120px 120px, 60px 60px;
+            opacity: 0.18;
+            animation: driftStars 35s linear infinite;
+            z-index: 0;
+        }
+        .binary-code,
+        .binary-layer {
+            position: fixed;
+            top: 14%;
+            left: -35%;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            letter-spacing: 0.3rem;
+            white-space: nowrap;
+            text-shadow: 0 0 12px rgba(59, 255, 123, 0.35);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .binary-code {
+            color: #34ff92;
+            animation: slideBinary 16s linear infinite;
+            opacity: 0.92;
+        }
+        .binary-layer {
+            color: rgba(92, 255, 132, 0.55);
+            animation: slideBinary 16s linear infinite, fadeBinary 7s ease-in-out infinite;
+        }
+        .binary-layer.layer-1 { top: 12%; animation-delay: 0s, 0s; font-size: 0.95rem; }
+        .binary-layer.layer-2 { top: 24%; animation-delay: 4s, 1.5s; font-size: 0.9rem; }
+        .binary-layer.layer-3 { top: 36%; animation-delay: 2s, 3s; font-size: 0.85rem; }
+        .binary-layer.layer-4 { top: 48%; animation-delay: 6s, 4.5s; font-size: 0.92rem; }
+        .binary-layer.layer-5 { top: 60%; animation-delay: 3s, 2s; font-size: 0.88rem; }
+        @keyframes moveBinary {
+            0% {transform: translateY(0);}
+            100% {transform: translateY(105%);}
+        }
+        @keyframes slideBinary {
+            0% {transform: translateX(0);} 
+            100% {transform: translateX(190%);} 
+        }
+        @keyframes fadeBinary {
+            0%, 100% { opacity: 0.35; }
+            50% { opacity: 0.85; }
+        }
+        @keyframes driftStars {
+            0% {transform: translateY(0);} 
+            100% {transform: translateY(-150px);} 
+        }
+        .container {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px 100px;
+            text-align: center;
+            z-index: 2;
+            animation: fadeIn 1s ease both;
+        }
+        .binary-layer {
+            position: fixed;
+            left: -40%;
+            font-family: 'Courier New', Courier, monospace;
+            letter-spacing: 0.32rem;
+            text-shadow: 0 0 12px rgba(59, 255, 123, 0.3);
+            pointer-events: none;
+            z-index: 1;
+            white-space: nowrap;
+            opacity: 0.8;
+        }
+        .binary-layer.layer-1 { top: 8%; font-size: 1.05rem; animation: slideBinary 18s linear infinite, fadeBinary 9s ease-in-out infinite; }
+        .binary-layer.layer-2 { top: 18%; font-size: 1rem; animation: slideBinary 20s linear infinite, fadeBinary 10s ease-in-out infinite; }
+        .binary-layer.layer-3 { top: 28%; font-size: 0.95rem; animation: slideBinary 16s linear infinite, fadeBinary 8s ease-in-out infinite; }
+        .binary-layer.layer-4 { top: 38%; font-size: 0.9rem; animation: slideBinary 22s linear infinite, fadeBinary 12s ease-in-out infinite; }
+        .binary-layer.layer-5 { top: 48%; font-size: 0.92rem; animation: slideBinary 17s linear infinite, fadeBinary 11s ease-in-out infinite; }
+        .binary-layer.layer-6 { top: 58%; font-size: 0.9rem; animation: slideBinary 19s linear infinite, fadeBinary 13s ease-in-out infinite; }
+        .binary-layer.layer-7 { top: 68%; font-size: 0.88rem; animation: slideBinary 21s linear infinite, fadeBinary 9.5s ease-in-out infinite; }
+        .binary-layer.layer-8 { top: 78%; font-size: 0.86rem; animation: slideBinary 15s linear infinite, fadeBinary 8.5s ease-in-out infinite; }
+        @keyframes slideBinary {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(210%); }
+        }
+        @keyframes fadeBinary {
+            0%, 100% { opacity: 0.24; }
+            50% { opacity: 0.95; }
+        }
+        header {
+            margin-bottom: 28px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            line-height: 1.02;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #ffffff;
+            text-shadow: 0 0 30px rgba(56, 215, 255, 0.2);
+        }
+        .headline span {
+            display: inline-block;
+            animation: floatChar 3.6s ease-in-out infinite;
+        }
+        .headline span:nth-child(odd) {
+            animation-delay: 0.1s;
+        }
+        .headline span:nth-child(even) {
+            animation-delay: 0.3s;
+        }
+        .subtitle {
+            margin: 14px auto 0;
+            max-width: 760px;
+            color: #d7e1ff;
+            font-size: 1.06rem;
+            line-height: 1.8;
+            letter-spacing: 0.02em;
+            animation: textGlow 4s ease-in-out infinite;
+        }
+        @keyframes floatChar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        @keyframes textGlow {
+            0%, 100% { opacity: 1; text-shadow: 0 0 0px rgba(84, 245, 255, 0); }
+            50% { opacity: 0.96; text-shadow: 0 0 18px rgba(84, 245, 255, 0.18); }
+        }
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 34px;
+            animation: slideUp 1s ease both;
+        }
+        .button {
+            border: 2px solid rgba(255,255,255,0.24);
+            background: rgba(255,255,255,0.08);
+            color: #f5f9ff;
+            padding: 16px 28px;
+            border-radius: 999px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            min-width: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+        .button::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, rgba(84,245,255,0.22) 0%, transparent 55%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .button:hover {
+            transform: translateY(-3px);
+            background: rgba(255,255,255,0.16);
+            border-color: rgba(84,245,255,0.45);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.24);
+        }
+        .button:hover::after {
+            opacity: 1;
+        }
+        .button:active {
+            transform: scale(0.98);
+        }
+        .card {
+            background: rgba(6, 12, 34, 0.95);
+            border: 1px solid rgba(84,245,255,0.12);
+            border-radius: 28px;
+            padding: 28px;
+            text-align: left;
+            max-width: 900px;
+            margin: 24px auto 0;
+            box-shadow: 0 35px 80px rgba(0,0,0,0.25);
+            backdrop-filter: blur(10px);
+            transform: translateY(0);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 50px 90px rgba(0,0,0,0.32);
+            border-color: rgba(84,245,255,0.18);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .card h2 {
+            margin: 0;
+            font-size: 2rem;
+            color: #8bf1ff;
+        }
+        .close-button {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.18);
+            color: #ffffff;
+            padding: 10px 16px;
+            border-radius: 999px;
+            min-width: auto;
+            font-size: 0.95rem;
+        }
+        .close-button:hover {
+            background: rgba(255,255,255,0.16);
+        }
+        .card p {
+            color: #d7dfe9;
+            line-height: 1.75;
+        }
+        .card img {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 20px;
+            margin-top: 22px;
+            border: 1px solid rgba(255,255,255,0.10);
+        }
+        .hidden {
+            display: none;
+        }
+        .info-grid {
+            display: grid;
+            gap: 18px;
+            margin-top: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+        .info-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 18px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .info-box:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.09);
+        }
+        .info-box h3 {
+            margin-top: 0;
+            color: #f8fbff;
+            font-size: 1.15rem;
+        }
+        .info-box p {
+            margin: 0;
+            color: #cbd4e3;
+            font-size: 0.98rem;
+        }
+        .secondary-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 200px;
+        }
+        .secondary-button span {
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+        .secondary-button.open span {
+            transform: rotate(90deg);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="binary-code">🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺</div>
+    <div class="binary-layer layer-1">🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺</div>
+    <div class="binary-layer layer-2">🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺</div>
+    <div class="binary-layer layer-3">🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺</div>
+    <div class="binary-layer layer-4">🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺</div>
+    <div class="binary-layer layer-5">🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺</div>
+    <div class="container">
+        <header>
+            <h1 class="headline"><span>B</span><span>a</span><span>d</span><span> </span><span>B</span><span>u</span><span>n</span><span>n</span><span>y</span></h1>
+            <p class="subtitle">Bienvenido a mi página web sobre la biografía de Bad Bunny</p>
+        </header>
+
+        <div class="buttons">
+            <button class="button" id="btnSobre">Sobre Bad Bunny</button>
+            <button class="button" id="btnCarrera">Carrera y música</button>
+            <button class="button secondary-button" id="toggleExtras"><span>▶</span> Más detalles</button>
+        </div>
+
+        <div class="card hidden" id="sobreCard">
+            <div class="card-header">
+                <h2>¿Quién es Bad Bunny?</h2>
+                <button class="button close-button">Cerrar</button>
+            </div>
+            <p>Bad Bunny, cuyo nombre real es Benito Antonio Martínez Ocasio, es un artista puertorriqueño de trap y reguetón. Saltó a la fama con su estilo único, letras honestas y colaboraciones con grandes nombres del género urbano.</p>
+            <p>Se caracteriza por su imagen creativa y por romper barreras en la música latina. Es uno de los artistas más influyentes del siglo XXI.</p>
+        </div>
+
+        <div class="card hidden" id="carreraCard">
+            <div class="card-header">
+                <h2>Carrera y éxitos</h2>
+                <button class="button close-button">Cerrar</button>
+            </div>
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3>Álbumes</h3>
+                    <p>Bad Bunny ha lanzado álbumes reconocidos como "YHLQMDLG", "El Último Tour del Mundo" y "Un Verano Sin Ti".</p>
+                </div>
+                <div class="info-box">
+                    <h3>Estilo</h3>
+                    <p>Su música mezcla trap, reguetón, pop, electrónica y rock. Sus letras van desde el romance hasta la crítica social.</p>
+                </div>
+                <div class="info-box">
+                    <h3>Premios</h3>
+                    <p>Ha ganado premios Grammy Latinos, Billboard Music Awards y ha liderado listas globales con múltiples sencillos.</p>
+                </div>
+            </div>
+            <p style="margin-top: 20px;">Bad Bunny también ha colaborado con artistas como J Balvin, Cardi B, Drake y Rosalía, ayudando a llevar la música latina a todo el mundo.</p>
+        </div>
+
+        <div class="card hidden" id="extrasCard">
+            <div class="card-header">
+                <h2>Detalles adicionales</h2>
+                <button class="button close-button">Cerrar</button>
+            </div>
+            <p>Presiona el botón de más detalles para abrir otro bloque con curiosidades, fechas importantes y más imágenes. La experiencia se siente como si cada nuevo botón despertara otra ventana de información.</p>
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3>Fecha de nacimiento</h3>
+                    <p>10 de marzo de 1994, en San Juan, Puerto Rico.</p>
+                </div>
+                <div class="info-box">
+                    <h3>Estilo visual</h3>
+                    <p>Su estética combina moda de alta costura, colores neón y detalles punk junto a un look relajado.</p>
+                </div>
+                <div class="info-box">
+                    <h3>Impacto</h3>
+                    <p>Es considerado un ícono del movimiento urbano moderno y un referente para una generación.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="binary-layer layer-6">🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺</div>
+    <div class="binary-layer layer-7">🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺</div>
+    <div class="binary-layer layer-8">🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺🌹🌺</div>
+
+    <script>
+        const btnSobre = document.getElementById('btnSobre');
+        const btnCarrera = document.getElementById('btnCarrera');
+        const toggleExtras = document.getElementById('toggleExtras');
+        const sobreCard = document.getElementById('sobreCard');
+        const carreraCard = document.getElementById('carreraCard');
+        const extrasCard = document.getElementById('extrasCard');
+        const extraArrow = toggleExtras.querySelector('span');
+        const closeButtons = document.querySelectorAll('.close-button');
+
+        function closeAll() {
+            sobreCard.classList.add('hidden');
+            carreraCard.classList.add('hidden');
+            extrasCard.classList.add('hidden');
+            toggleExtras.classList.remove('open');
+            extraArrow.textContent = '▶';
+        }
+
+        btnSobre.addEventListener('click', () => {
+            closeAll();
+            sobreCard.classList.remove('hidden');
+        });
+
+        btnCarrera.addEventListener('click', () => {
+            closeAll();
+            carreraCard.classList.remove('hidden');
+        });
+
+        toggleExtras.addEventListener('click', () => {
+            if (extrasCard.classList.contains('hidden')) {
+                closeAll();
+                extrasCard.classList.remove('hidden');
+                toggleExtras.classList.add('open');
+                extraArrow.textContent = '▼';
+            } else {
+                extrasCard.classList.add('hidden');
+                toggleExtras.classList.remove('open');
+                extraArrow.textContent = '▶';
+            }
+        });
+
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const card = button.closest('.card');
+                if (card) {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
